@@ -1,6 +1,4 @@
-# n.m — Generative Engine Optimization Map
-
-> A לוגיסטיקה ותחבורה business.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -36,16 +34,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About n.m
-n.m is a business in the לוגיסטיקה ותחבורה industry.
-
-## Target Audience
-- בעלי עסקים קטנים
-- קמעונאים מקוונים
-
-## Industry
-לוגיסטיקה ותחבורה
-
+## About Business
 ---
 
 # Additional Resources
