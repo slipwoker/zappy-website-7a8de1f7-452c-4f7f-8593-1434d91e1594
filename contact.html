@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>צור קשר - n.m</title>
+  <meta name="description" content="צור קשר - n.m provides professional לוגיסטיקה ותחבורה services. Specializing in new mexico taxation and revenue department.">
+  <meta name="keywords" content="new mexico taxation and revenue department, new mexico taxation and revenue, new mexico courts, n.m">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:title" content="צור קשר - n.m">
+  <meta property="og:description" content="צור קשר - n.m provides professional לוגיסטיקה ותחבורה services. Specializing in new mexico taxation and revenue department.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="צור קשר - n.m">
+  <meta name="twitter:description" content="צור קשר - n.m provides professional לוגיסטיקה ותחבורה services. Specializing in new mexico taxation and revenue department.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '7a8de1f7-452c-4f7f-8593-1434d91e1594',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; background: transparent !important; border: none !important; cursor: pointer !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+</head>
+<body>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+  
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="logo-link">
+        <img src="/assets/business-logo.webp" alt="n.m" class="logo" />
+      </a>
+    </div>
+    
+    <ul class="nav-menu" id="navMenu"><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li></ul>
+    
+    <div class="nav-cta-container">
+      <a href="/contact" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+  
+  <main>
+    <section class="contact-intro-section" data-layout-spec="צור קשר-intro">
+  <div class="contact-intro-container">
+    <div class="contact-intro-header">
+      <h2>התחילו עם הודעה קצרה</h2>
+      <p class="contact-intro-lead">מספיק לספר לנו בקצרה מה אתם צריכים – הצוות שלנו ישאל שאלות מדויקות כדי לתת לכם הצעת מחיר מותאמת ומהירה.</p>
+    </div>
+
+    <div class="contact-intro-content">
+      <div class="contact-intro-details">
+        <div class="detail-item">
+          <h3>איזורי איסוף והורדה</h3>
+          <p>ציינו את נקודת האיסוף והיעד – זה עוזר לנו לתכנן את המסלול ולתת מחיר מדויק.</p>
+        </div>
+        <div class="detail-item">
+          <h3>חלון זמנים</h3>
+          <p>האם יש תאריך או שעות מועדפות? גם אם זה גמיש – כדאי לציין, כך נוכל להתאים את הלוגיסטיקה.</p>
+        </div>
+        <div class="detail-item">
+          <h3>גודל ואופי הטובין</h3>
+          <p>תיאור קצר של המשלוח (גודל, משקל, רגישות) מאפשר לנו להכין את הציוד המתאים.</p>
+        </div>
+      </div>
+
+      <div class="contact-intro-image-wrapper">
+        <img data-placeholder="contact-intro-image-1" data-context="Warm coordination moment for logistics business: professional dispatcher or coordinator on phone call taking notes at organized desk, calm natural lighting, modern logistics office setting, person wearing casual business attire, clipboard or tablet visible, neutral warm tones, professional yet approachable atmosphere" width="600" height="700" src="/assets/site-contact-intro-image-1.webp" alt="צוות n.m מתאם פרטי משלוח בשיחת טלפון">
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-intro-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 2" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="1" x2="1200" y2="1" stroke="var(--border-light)" stroke-width="1"></line>
+      <defs>
+        <linearGradient id="contact-intro-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:var(--bg-light);stop-"></stop>
+          <stop offset="100%" style="stop-color:var(--bg-light);stop-opacity:1"></stop>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1200" height="2" fill="url(#contact-intro-fade)"></rect>
+    </svg>
+  </div>
+</section>
+
+<section class="-contact-section" data-layout-spec="צור קשר-contact">
+  <div class="-contact-section__container">
+    <div class="-contact-section__content">
+      <h2 class="-contact-section__heading">ספרו לנו מה אתם צריכים להעביר</h2>
+      <p class="-contact-section__intro">מלאו את הפרטים ונחזור אליכם תוך 24 שעות עם הצעת מחיר מותאמת אישית. אנחנו כאן כדי לתכנן יחד איתכם את המסלול הטוב ביותר למשלוח שלכם.</p>
+      
+      <form class="contact-form -contact-section__form">
+        <div class="-contact-section__form-row">
+          <div class="-contact-section__form-field">
+            <label for="contact-name" class="-contact-section__label">שם מלא</label>
+            <input type="text" id="contact-name" name="name" class="-contact-section__input" required="">
+          </div>
+          <div class="-contact-section__form-field">
+            <label for="contact-email" class="-contact-section__label">אימייל</label>
+            <input type="email" id="contact-email" name="email" class="-contact-section__input" required="">
+          </div>
+        </div>
+        
+        <div class="-contact-section__form-row">
+          <div class="-contact-section__form-field">
+            <label for="contact-phone" class="-contact-section__label">טלפון</label>
+            <input type="tel" id="contact-phone" name="phone" class="-contact-section__input" required="">
+          </div>
+          <div class="-contact-section__form-field -contact-section__form-field--empty"></div>
+        </div>
+        
+        <div class="-contact-section__form-field -contact-section__form-field--full">
+          <label for="contact-message" class="-contact-section__label">פרטי המשלוח</label>
+          <textarea id="contact-message" name="message" class="-contact-section__textarea" rows="6" placeholder="ספרו לנו על סוג המטען, יעד, מועדים רצויים וכל פרט נוסף שיעזור לנו להכין עבורכם הצעה מדויקת"></textarea>
+        </div>
+        
+        <div class="-contact-section__form-footer">
+          <button type="submit" class="-contact-section__submit-btn">שלחו פנייה</button>
+          <p class="-contact-section__privacy-note">הפרטים שלכם נשמרים אצלנו בסודיות מלאה ומשמשים אך ורק ליצירת קשר בנוגע לבקשתכם.</p>
+        </div>
+      </form>
+    </div>
+    
+    <div class="-contact-section__contact-info">
+      <div class="-contact-section__info-card">
+        <h3 class="-contact-section__info-title">פרטי התקשרות</h3>
+        <div class="-contact-section__info-item">
+          <svg class="-contact-section__info-icon" data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.5 6.66667L9.0755 11.0504C9.63533 11.4236 10.3647 11.4236 10.9245 11.0504L17.5 6.66667M4.16667 15.8333H15.8333C16.7538 15.8333 17.5 15.0871 17.5 14.1667V5.83333C17.5 4.91286 16.7538 4.16667 15.8333 4.16667H4.16667C3.24619 4.16667 2.5 4.91286 2.5 5.83333V14.1667C2.5 15.0871 3.24619 15.8333 4.16667 15.8333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <a href="mailto:[business_email]" class="-contact-section__info-link">[business_email]</a>
+        </div>
+        <div class="-contact-section__info-item">
+          <svg class="-contact-section__info-icon" data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.5 5.83333C2.5 4.91286 3.24619 4.16667 4.16667 4.16667H6.45501C6.85501 4.16667 7.20833 4.4375 7.32917 4.82083L8.32917 8.15417C8.46251 8.57083 8.29167 9.02083 7.92084 9.24583L6.45834 10.1458C7.40834 12.0458 8.95417 13.5917 10.8542 14.5417L11.7542 13.0792C11.9792 12.7083 12.4292 12.5375 12.8458 12.6708L16.1792 13.6708C16.5625 13.7917 16.8333 14.145 16.8333 14.545V16.8333C16.8333 17.7538 16.0871 18.5 15.1667 18.5H14.1667C7.63214 18.5 2.5 13.3679 2.5 6.83333V5.83333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <a href="tel:[business_phone]" class="-contact-section__info-link">[business_phone]</a>
+        </div>
+        <div class="-contact-section__info-item">
+          <svg class="-contact-section__info-icon" data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.5 8.33333C17.5 14.1667 10 19.1667 10 19.1667C10 19.1667 2.5 14.1667 2.5 8.33333C2.5 6.34421 3.29018 4.43655 4.6967 3.03007C6.10322 1.62359 8.01088 0.833332 10 0.833332C11.9891 0.833332 13.8968 1.62359 15.3033 3.03007C16.7098 4.43655 17.5 6.34421 17.5 8.33333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M10 10.8333C11.3807 10.8333 12.5 9.71405 12.5 8.33333C12.5 6.95262 11.3807 5.83333 10 5.83333C8.61929 5.83333 7.5 6.95262 7.5 8.33333C7.5 9.71405 8.61929 10.8333 10 10.8333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="-contact-section__info-text">[business_address]</span>
+        </div>
+        <a href="https://maps.google.com/?q=[business_address]" target="_blank" rel="noopener noreferrer" class="-contact-section__map-link">הצגה במפה</a>
+      </div>
+      
+      <div class="-contact-section__social-card">
+        <h3 class="-contact-section__info-title">עקבו אחרינו</h3>
+        <div class="-contact-section__social-links">
+          <a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" class="-contact-section__social-link" aria-label="Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" class="-contact-section__social-link" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+              <path d="M16 11.37C16.1234 12.2022 15.9812 13.0522 15.5937 13.799C15.2062 14.5458 14.5931 15.1514 13.8416 15.5297C13.0901 15.9079 12.2384 16.0396 11.4077 15.9059C10.5771 15.7723 9.80971 15.3801 9.21479 14.7852C8.61987 14.1902 8.22768 13.4229 8.09402 12.5922C7.96035 11.7615 8.09202 10.9099 8.47028 10.1584C8.84854 9.40685 9.45414 8.79374 10.2009 8.40624C10.9477 8.01874 11.7977 7.87658 12.63 8C13.4789 8.12588 14.2648 8.52146 14.8716 9.1283C15.4785 9.73515 15.8741 10.5211 16 11.37Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M17.5 6.5H17.51" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" class="-contact-section__social-link" aria-label="WhatsApp">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 11.5C21.0034 13.1199 20.6951 14.7219 20.1 16.2C19.3944 17.9118 18.3098 19.4226 16.9424 20.6099C15.5751 21.7972 13.9638 22.6279 12.2414 23.0365C10.519 23.4451 8.73013 23.4201 7.01997 22.9637C5.30981 22.5073 3.72064 21.6322 2.38 20.4L1 21L1.6 19.6C0.423707 18.2118 -0.395453 16.5661 -0.821626 14.8077C-1.2478 13.0494 -1.27072 11.2227 -0.889193 9.45363C-0.507665 7.68456 0.270914 6.01763 1.40691 4.59808C2.54291 3.17853 3.99902 2.04566 5.65997 1.29003C7.32091 0.534392 9.13752 0.177165 10.9655 0.246933C12.7936 0.316701 14.5792 0.811655 16.1802 1.69153C17.7812 2.5714 19.1515 3.81009 20.1796 5.31304C21.2078 6.81598 21.8651 8.5416 22.1 10.35C21.9 10.4 21 11.5 21 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M16 14.5C16 14.5 15.5 15 15 15C14 15 11 13 9.5 11.5C8 10 6 7 6 6C6 5.5 6.5 5 6.5 5C6.5 5 7 5 7.5 5.5C8 6 8.5 7 8.5 7.5C8.5 8 8 8.5 8 8.5C8 8.5 8.5 10 10 11.5C11.5 13 13 13.5 13 13.5C13 13.5 13.5 13 14 13C14.5 13 15.5 13.5 16 14C16.5 14.5 16.5 15 16.5 15C16.5 15 16 14.5 16 14.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="-contact-section-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,42 Q40,38 80,44 T160,40 Q200,42 240,38 T320,44 Q360,40 400,42 T480,38 Q520,44 560,40 T640,42 Q680,38 720,44 T800,40 Q840,42 880,38 T960,44 Q1000,40 1040,42 T1120,38 Q1160,44 1200,40 L1200,80 Z" fill="var(--bg-light)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="contact-info-section" data-layout-spec="צור קשר-info">
+  <div class="contact-info-container">
+    <div class="contact-info-content">
+      <h2 class="contact-info-title">איך ליצור קשר ומה קורה אחר כך</h2>
+      
+      <div class="contact-info-cards">
+        <div class="contact-info-card">
+          <div class="contact-info-card-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26.667 22.667v2.666a2.667 2.667 0 01-2.907 2.654 26.347 26.347 0 01-11.493-4.094A25.96 25.96 0 014.76 16.387a26.347 26.347 0 01-4.093-11.56A2.667 2.667 0 013.32 2h2.667a2.667 2.667 0 012.666 2.293c.169 1.28.48 2.534.934 3.734a2.667 2.667 0 01-.6 2.813l-1.134 1.133a21.334 21.334 0 007.507 7.507l1.133-1.134a2.667 2.667 0 012.814-.6c1.2.454 2.454.765 3.733.934a2.667 2.667 0 012.294 2.707v-.04z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="contact-info-card-title">הדרך הטובה ביותר ליצור קשר</h3>
+          <p class="contact-info-card-text">צרו קשר טלפוני או דרך הטופס באתר. אנחנו זמינים לכל שאלה על שירותי הלוגיסטיקה והתחבורה שלנו, ומתחייבים לחזור אליכם במהירות.</p>
+        </div>
+        
+        <div class="contact-info-card">
+          <div class="contact-info-card-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="13.333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+              <path d="M16 8v8l5.333 2.667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="contact-info-card-title">זמינות ותגובה</h3>
+          <p class="contact-info-card-text">אנחנו עובדים בימים א׳-ה׳ בשעות העבודה הרגילות. פניות שמתקבלות מחוץ לשעות אלו יטופלו ביום העסקים הבא. אנחנו מחויבים למענה מהיר ומקצועי.</p>
+        </div>
+        
+        <div class="contact-info-card">
+          <div class="contact-info-card-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28 13.333L16 21.333 4 13.333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M4 13.333L16 5.333l12 8v14.667a2.667 2.667 0 01-2.667 2.667H6.667A2.667 2.667 0 014 28V13.333z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="contact-info-card-title">מה קורה אחרי הפנייה</h3>
+          <p class="contact-info-card-text">לאחר שתשלחו את הפנייה, נחזור אליכם תוך 24 שעות עם הצעת מחיר מפורטת או תשובות לשאלותיכם. נעבוד יחד כדי למצוא את הפתרון הלוגיסטי המושלם עבורכם.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-info-illustration">
+      <svg data-no-icon-edit="true" aria-hidden="true" class="contact-route-svg" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 50 Q120 120, 100 200 T120 350 Q140 420, 180 450" stroke="var(--border-light)" stroke-width="2" stroke-linecap="round" stroke-dasharray="8 6" fill="none"></path>
+        <circle cx="80" cy="50" r="8" fill="var(--accent)" opacity="0.7"></circle>
+        <circle cx="100" cy="200" r="6" fill="var(--secondary)" opacity="0.6"></circle>
+        <circle cx="120" cy="350" r="7" fill="var(--primary)" opacity="0.5"></circle>
+        <circle cx="180" cy="450" r="9" fill="var(--accent)" opacity="0.8"></circle>
+        
+        <path d="M320 80 Q280 150, 300 230 T280 380 Q260 440, 220 470" stroke="var(--border-light)" stroke-width="2" stroke-linecap="round" stroke-dasharray="8 6" fill="none"></path>
+        <circle cx="320" cy="80" r="7" fill="var(--secondary)" opacity="0.6"></circle>
+        <circle cx="300" cy="230" r="6" fill="var(--primary)" opacity="0.5"></circle>
+        <circle cx="280" cy="380" r="8" fill="var(--accent)" opacity="0.7"></circle>
+        <circle cx="220" cy="470" r="7" fill="var(--secondary)" opacity="0.6"></circle>
+      </svg>
+    </div>
+  </div>
+  
+  <div class="contact-info-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 L0,30 Q300,20 600,30 T1200,30 L1200,60 Z" fill="var(--primary)" opacity="0.12"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="contact-faq-section" data-layout-spec="צור קשר-faq">
+  <div class="contact-faq-container">
+    <div class="contact-faq-header">
+      <h2>שאלות נפוצות</h2>
+    </div>
+    
+    <div class="contact-faq-grid">
+      <article class="contact-faq-card">
+        <h3>האם יש כיסוי ביטוחי למשלוחים?</h3>
+        <p>כל המשלוחים שלנו מבוטחים באופן מלא. אנחנו דואגים לכך שהפריטים שלכם מוגנים לאורך כל הדרך, עם כיסוי מקיף שמעניק לכם שקט נפשי מוחלט.</p>
+      </article>
+      
+      <article class="contact-faq-card">
+        <h3>מהם חלונות הזמן למשלוח?</h3>
+        <p>אנחנו מציעים חלונות זמן גמישים המותאמים לצרכים שלכם. משלוחים סטנדרטיים מתבצעים בין 08:00-18:00, עם אפשרות לתיאום מדויק יותר לפי בקשה. נעדכן אתכם מראש על הזמן המשוער.</p>
+      </article>
+      
+      <article class="contact-faq-card">
+        <h3>אילו פריטים דורשים טיפול מיוחד?</h3>
+        <p>פריטים שבירים, אלקטרוניקה רגישה, ריהוט עתיק או חפצי אמנות מקבלים טיפול מיוחד. אנחנו משתמשים באריזה מקצועית וטכניקות הובלה מותאמות כדי להבטיח שהפריטים המיוחדים שלכם יגיעו בשלמות.</p>
+      </article>
+      
+      <article class="contact-faq-card">
+        <h3>איך אקבל עדכונים על המשלוח?</h3>
+        <p>תקבלו עדכונים בזמן אמת דרך SMS או WhatsApp לאורך כל תהליך המשלוח. נודיע לכם כשהמשלוח יוצא לדרך, כשהוא בדרך אליכם, וכמובן כשהוא מגיע ליעד. שקיפות מלאה לאורך כל הדרך.</p>
+      </article>
+    </div>
+  </div>
+  
+  <div class="contact-faq-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="faqDividerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#1B1B1B;stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:#F5F1E8;stop-opacity:1"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,100 L0,40 L1200,60 L1200,100 Z" fill="url(#faqDividerGradient)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="contact-cta-section" data-layout-spec="צור קשר-cta">
+  <div class="contact-cta-container">
+    <h2 class="contact-cta-title">מעדיפים להבין את האפשרויות קודם?</h2>
+    <p class="contact-cta-text">מוזמנים לעיין בשירותים שלנו או לשלוח הודעה קצרה – נשמח לעזור לכם למצוא את הפתרון המתאים ביותר לצרכי התחבורה והלוגיסטיקה שלכם.</p>
+    <div class="contact-cta-buttons">
+      <a href="#contact-form" class="btn btn-primary contact-cta-btn-primary">שליחת הודעה</a>
+      <a href="/services" class="btn btn-secondary contact-cta-btn-secondary">צפייה בשירותים</a>
+    </div>
+    <div class="contact-cta-divider"></div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer"><div class="footer-container"><div class="footer-grid"><div class="footer-column footer-about"><img src="/assets/business-logo.webp" alt="n.m" class="logo" /><p class="footer-description">פתרונות לוגיסטיקה ותחבורה מתקדמים עבור העסק שלך. שירות אמין ומקצועי בכל רחבי הארץ.</p></div><div class="footer-column footer-links"><h3>קישורים מהירים</h3><ul><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li><li><a href="/contact">צור קשר</a></li></ul></div><div class="footer-column footer-contact"><h3>יצירת קשר</h3><ul><li><i class="fas fa-envelope"></i><a href="mailto:[business_email]">[business_email]</a></li><li><i class="fas fa-phone"></i><a href="tel:[business_phone]">[business_phone]</a></li><li><a href="/"><i class="fas fa-map-marker-alt"></i><span>[business_address]</span></a></li></ul></div><div class="footer-column footer-social"><h3>עקבו אחרינו</h3><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div></div><div class="footer-bottom"><div class="footer-legal"><a href="/privacy">מדיניות פרטיות</a><span class="separator">|</span><a href="/terms">תנאים והגבלות</a><span class="separator">|</span><a href="/accessibility">הצהרת נגישות</a></div><div class="footer-copyright"><p>© 2026 n.m. כל הזכויות שמורות.</p></div><div class="footer-attribution"><a href="https://zappy5.com" target="_blank" class="zappy-attribution">Generated by Zappy</a></div></div></div></footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script src="/script.js"></script>
+
+    <div data-integration="accessibility:toolbar"></div>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body></html>
