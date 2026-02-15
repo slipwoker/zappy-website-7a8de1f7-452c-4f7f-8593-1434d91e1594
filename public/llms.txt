@@ -1,43 +1,54 @@
-# Business — Generative Engine Optimization Map
+# n.m — Generative Engine Optimization Map
+
+> A לוגיסטיקה ותחבורה business.
 
 ---
 
 ## Pages
 
 ### בית
-https://example.com
+https://n-m.zappy5.app
 
 ### שירותים
-https://example.com/services
+https://n-m.zappy5.app/services
 
 ### אודות
-https://example.com/about
+https://n-m.zappy5.app/about
 
 ### צור קשר
-https://example.com/contact
+https://n-m.zappy5.app/contact
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://n-m.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://n-m.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://n-m.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About n.m
+n.m is a business in the לוגיסטיקה ותחבורה industry.
+
+## Target Audience
+- בעלי עסקים קטנים
+- קמעונאים מקוונים
+
+## Industry
+לוגיסטיקה ותחבורה
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://n-m.zappy5.app/sitemap.xml
+- **Robots.txt**: https://n-m.zappy5.app/robots.txt
